@@ -34,6 +34,17 @@
           "Collaborated with product managers to define and implement new features",
           "Participated in code refactoring and optimization efforts"
         ]
+      },
+      {
+        "position": "Blblah engineeer",
+        "company": "blah tech Tech",
+        "location": "Blah, USA",
+        "startDate": "June 2010",
+        "endDate": "December 2007",
+        "responsibilities": [
+          "Implement new features",
+          "Caffe boy"
+        ]
       }
     ],
     "education": [
