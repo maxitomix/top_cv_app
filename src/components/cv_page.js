@@ -1,46 +1,29 @@
 
-function Profile (){
+function Profile() {
   return (
-    <div className="profile">
-      Profile section
-    </div>
+      <div className="profile">
+        Profile
+      </div>
   );
-};
+}
 
 
-function Skills (){
+function Skills() {
   return (
-    <div className="skills">
-      Skills section
-    </div>
+      <div className="skills">
+        Skills
+      </div>
   );
-};
+}
 
-
-function WorkExperience (){
-  return (
-    <div className="workExperience">
-      Work Experience section
-    </div>
-  );
-};
-
-
-function Education (){
-  return (
-    <div className="education">
-      Education section
-    </div>
-  );
-};
 
 export default function CvPage() {
-  return(
-    <div className="cvPage">
-      <Profile />
-      <Skills />
-      <WorkExperience />
-      <Education />
-    </div>
-  )
-};
+    return (
+      <div className="cvPage">
+        <Profile />
+        <Skills />
+      </div>
+    );
+}
+
+
