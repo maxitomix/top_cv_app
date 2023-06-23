@@ -53,6 +53,12 @@
         "institution": "University of ABC",
         "location": "New York, USA",
         "graduationYear": 2015
+      },
+      {
+        "degree": "High School Gaduate",
+        "institution": "High Shool of Tokio",
+        "location": "Tokio Japan",
+        "graduationYear": 2010
       }
     ],
     "skills": [

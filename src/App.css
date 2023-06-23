@@ -14,14 +14,14 @@
 .cvEditor{
   width: 90%;
   background-color: aquamarine;
-  padding: 1rem;
+  padding: 2rem;
   margin: 2rem;
   border: 1px solid black;}
 
 .cvPage{
   width: 90%;
   background-color: rgb(227, 255, 227);
-  padding: 1rem;
+  padding: 2rem;
   margin: 2rem;
   border: 1px solid black;
 }
@@ -52,26 +52,67 @@
   text-align: right; 
 }
 
+.profileRow2 .profileSummary{
+  text-align: justify;
+  text-indent: 25px;
+}
+
 .skills{
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.WorkExperienceRow1 {
+.workExperienceRow1 {
   display:flex ;
+  margin-bottom: .25rem;
 }
 
-.WorkExperienceRow1 > * {
+.workExperienceRow1 > * {
   display: inline;
 }
 
-.WorkExperienceRow1 .company{
+.workExperienceRow1 .company{
   margin-left: auto;
   border-right: 1px solid black;
   margin-right: .25rem;
   padding-right: .25rem;
 }
 
-.WorkExperienceRow1 .endDate{
+.workExperienceRow1 .endDate{
   margin-left: .25rem;
+}
+
+.workExperienceRow1 .position, .company, .endDate, .startDate{
+  font-weight: bold;
+}
+
+
+.workExperienceRow2{
+  margin-bottom: 1rem;
+  text-align: justify;
+  text-indent: 25px;
+}
+
+.educationRow1 {
+  display:flex ;
+  margin-bottom: .25rem;
+}
+
+.educationRow1  > * {
+  display: inline;
+}
+
+.educationRow1 .degree{
+  font-weight: bold;
+}
+
+.educationRow1 .graduationYear{
+  margin-left: auto;
+  margin-right: .25rem;
+  padding-right: .25rem;
+  font-weight: bold;
+}
+
+.educationRow2{
+  margin-bottom: 1rem;
 }

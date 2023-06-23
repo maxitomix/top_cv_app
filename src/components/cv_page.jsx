@@ -53,12 +53,17 @@ function WorkExperience(){
 
       {workList.map((work,index) => (
         <div key={index}>
-          <div className="WorkExperienceRow1">
+          <div className="workExperienceRow1">
             <div className="position">{work.position}</div>
             <div className="company">{work.company}</div>
             <div className="startDate">{work.startDate.split(' ')[1] }</div>
             <div className="endDate">{` - ${work.endDate.split(' ')[1] || ' Present'}`}</div>
           </div>
+
+          <p className="workExperienceRow2">
+            {work.responsibilities}
+          </p>
+
         </div>
       ))}
 
@@ -68,10 +73,30 @@ function WorkExperience(){
 
 
 function Education(){
+  const education = samplePerson.education;
   return(
     <div className="education">
-    Education
-  </div>
+      <h2 className='educationTitle'>EDUCATION</h2>
+
+      {education.map((institution,index) => (
+        <div key={index}>
+
+          <div className="educationRow1">
+            <div className="degree">{institution.degree}</div>
+            <div className="graduationYear">{`${institution.graduationYear || ' Present'}`}</div>
+          </div>
+
+          <div className="educationRow2">
+            <div className="institution">{institution.institution}</div>
+            <div className="location">{institution.location}</div>
+          </div>
+         
+
+
+        </div>
+      ))}
+
+    </div>
   );
 }
 
