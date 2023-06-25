@@ -76,10 +76,15 @@
 }
 
 .skills h2{
-  border-top: 1px solid blue;
+  border-bottom: 1px solid blue;
 }
 
 /* -----------WORK EXPERIENCE */
+
+.workExperienceTitle{
+  border-bottom: 1px solid blue;
+}
+
 .workExperienceRow1 {
   display:flex ;
   margin-bottom: .25rem;
@@ -111,6 +116,12 @@
   text-indent: 25px;
 }
 
+/* ---------------EDUCATION */
+
+.educationTitle{
+  border-bottom: 1px solid blue;
+}
+
 .educationRow1 {
   display:flex ;
   margin-bottom: .25rem;
@@ -133,4 +144,17 @@
 
 .educationRow2{
   margin-bottom: 1rem;
+}
+
+/* ---------------InputBox */
+
+.inputBox{
+  
+  flex-direction: column;
+  width: 100%;
+}
+
+.input{
+  display: flex;
+  justify-content: space-between;
 }

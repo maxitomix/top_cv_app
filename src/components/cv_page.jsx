@@ -49,7 +49,7 @@ function WorkExperience(){
   const workList = samplePerson.workExperience;
   return(
     <div className="workExperience">
-      <h2 className='workeExperienceTitle'>WORK EXPERIENCE</h2>
+      <h2 className='workExperienceTitle'>WORK EXPERIENCE</h2>
 
       {workList.map((work,index) => (
         <div key={index}>
