@@ -1,3 +1,10 @@
+
+
+
+function ProfileEditor(){
+  
+}
+
 export default function CvEditor() {
   return (
       <div className="cvEditor">
