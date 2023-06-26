@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 function ProfileEditor(props){
   const [newName, setNewName] = useState(props.newProfile.name)
   const [newTitle, setNewTitle] = useState(props.newProfile.title)
+  const [newSummary, setNewSummary] = useState(props.newProfile.summary)
   const [newPhone, setNewPhone] = useState(props.newProfile.phone)
   const [newEmail, setNewEmail] = useState(props.newProfile.email)
   const [newWebsite, setNewWebsite] = useState(props.newProfile.website)
@@ -17,6 +18,10 @@ function ProfileEditor(props){
   const handleTitleChange = (e) => {
     setNewTitle(e.target.value);
     props.setProfile({ ...props.newProfile, title: e.target.value });
+  };
+  const handleSummaryChange = (e) => {
+    setNewSummary(e.target.value);
+    props.setProfile({ ...props.newProfile, summary: e.target.value });
   };
   const handlePhoneChange = (e) => {
     setNewPhone(e.target.value);
@@ -55,7 +60,16 @@ function ProfileEditor(props){
           type="text" 
           value={newTitle}
           onChange={handleTitleChange}
-          /></label>
+          />
+       </label>
+
+       <label className="input">Summary:
+          <input 
+          type="text" 
+          value={newSummary}
+          onChange={handleSummaryChange}
+          />
+       </label>
 
         <label className="input">Phone:
           <input 
@@ -119,14 +133,16 @@ function SkillsEditor(props){
 
       <div className="inputBox">
         {newSkills.map((skill, index) => (
-          <label className="input" key={index}>Skill No {index}
-            <input 
-              type="text" 
-              value={skill}
-              onChange={(e) => handleSkillChange(index, e)}
-            />
-            <button onClick={() => handleDeleteSkill(index)}>delete</button>
-          </label>
+          <div key={index}>
+            <label className="input" >Skill  {index +1}
+              <input 
+                type="text" 
+                value={skill}
+                onChange={(e) => handleSkillChange(index, e)}
+              />
+              <button onClick={() => handleDeleteSkill(index)}>delete</button>
+            </label>
+          </div>
         ))}
       </div>
       <button onClick={() => handleAddSkill()}>Add</button>
@@ -138,6 +154,20 @@ function SkillsEditor(props){
 function WorkExperienceEditor(props){
   const [works, setWork] = useState(props.newWorkExperience ||[])
 
+  const handleStartDateChange = (e, index) => {
+    const updatedWorks = [...works];
+    updatedWorks[index] = { ...updatedWorks[index], startDate: e.target.value };
+    setWork(updatedWorks);
+    props.setWorkExperience(updatedWorks);
+  };
+
+  const handleEndDateChange = (e, index) => {
+    const updatedWorks = [...works];
+    updatedWorks[index] = { ...updatedWorks[index], endDate: e.target.value };
+    setWork(updatedWorks);
+    props.setWorkExperience(updatedWorks);
+  };
+
   const handlePositionChange = (e, index) => {
     const updatedWorks = [...works];
     updatedWorks[index] = { ...updatedWorks[index], position: e.target.value };
@@ -145,24 +175,90 @@ function WorkExperienceEditor(props){
     props.setWorkExperience(updatedWorks);
   };
 
+  const handleCompanyChange = (e, index) => {
+    const updatedWorks = [...works];
+    updatedWorks[index] = { ...updatedWorks[index], company: e.target.value };
+    setWork(updatedWorks);
+    props.setWorkExperience(updatedWorks);
+  }
+
+  const handleResponsibilityChange = (e, index) => {
+    const updatedWorks = [...works];
+    updatedWorks[index] = { ...updatedWorks[index], responsibilities: e.target.value };
+    setWork(updatedWorks);
+    props.setWorkExperience(updatedWorks);
+  }
+
+  const handleDeleteWork = (index) => {
+    const updatedWorks = [...works];
+    updatedWorks.splice(index,1);
+    setWork(updatedWorks);
+    props.setWorkExperience(updatedWorks);
+  }
+
+  
+  const handleAddWork = () =>{
+    const updatedWorks = [...works];
+    updatedWorks.push({position: "New Work"});
+    setWork(updatedWorks);
+    props.setWorkExperience(updatedWorks);
+  }
 
   return(
   <div className="workExperienceEditor">
       <h2>WORK EXPERIENCE</h2>
       <div className="inputBox">
           {works.map((work, index) => (
+            <div key={index}>
+              <h5 className="workIndex">Work {index+1}</h5>
 
-            <label className="input">Position:
+              <label className="input" > Start Date:
+                <input 
+                type="text" 
+                value={work.startDate}
+                onChange={(e) => handleStartDateChange(e, index)}
+                />
+              </label>
+
+              <label className="input" > End Date:
+                <input 
+                type="text" 
+                value={work.endDate}
+                onChange={(e) => handleEndDateChange(e, index)}
+                />
+              </label>
+
+              <label className="input" > Position:
+                <input 
+                type="text" 
+                value={work.position}
+                onChange={(e) => handlePositionChange(e, index)}
+                />
+              </label>
+
+              <label className="input" > Company:
               <input 
               type="text" 
-              value={work.position}
-              onChange={(e) => handlePositionChange(e, index)}
+              value={work.company}
+              onChange={(e) => handleCompanyChange(e, index)}
               />
-            </label>
+              </label>
+
+              <label className="input" > Responsibilities:
+              <textarea rows="5" cols="50"
+              
+              value={work.responsibilities}
+              onChange={(e) => handleResponsibilityChange(e, index)}
+              >
+              </textarea>
+              </label>
+
+              <button onClick={() => handleDeleteWork(index)}>delete</button>
+            </div>
 
           ))}
       </div>  
-
+      <button onClick={() => handleAddWork()}>Add</button>
     </div>
   )
 }

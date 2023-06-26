@@ -49,8 +49,8 @@ function Skills({skillsApp}) {
   );
 }
 
-function WorkExperience(){
-  const workList = samplePerson.workExperience;
+function WorkExperience({workExperienceApp}){
+  const workList = workExperienceApp;
   return(
     <div className="workExperience">
       <h2 className='workExperienceTitle'>WORK EXPERIENCE</h2>
@@ -60,8 +60,8 @@ function WorkExperience(){
           <div className="workExperienceRow1">
             <div className="position">{work.position}</div>
             <div className="company">{work.company}</div>
-            <div className="startDate">{work.startDate.split(' ')[1] }</div>
-            <div className="endDate">{` - ${work.endDate.split(' ')[1] || ' Present'}`}</div>
+            <div className="startDate">{work.startDate}</div>
+            <div className="endDate">{` - ${work.endDate || ' Present'}`}</div>
           </div>
 
           <p className="workExperienceRow2">
@@ -105,12 +105,12 @@ function Education(){
 }
 
 
-export default function CvPage({ profileApp, skillsApp }) {
+export default function CvPage({ profileApp, skillsApp, workExperienceApp }) {
     return (
       <div className="cvPage">
         <Profile profileApp={profileApp}/>
         <Skills skillsApp={skillsApp}/>
-        <WorkExperience />
+        <WorkExperience workExperienceApp={workExperienceApp}/>
         <Education />
       </div>
     );

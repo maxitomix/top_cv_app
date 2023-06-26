@@ -14,7 +14,7 @@
         "position": "Senior Software Engineer",
         "company": "ABC Corporation",
         "location": "San Francisco, USA",
-        "startDate": "January 2018",
+        "startDate": "2018",
         "endDate": "Present",
         "responsibilities": [
           "Developing and maintaining high-quality software applications",
@@ -27,8 +27,8 @@
         "position": "Software Engineer",
         "company": "XYZ Tech",
         "location": "Seattle, USA",
-        "startDate": "June 2015",
-        "endDate": "December 2017",
+        "startDate": "2015",
+        "endDate": "2017",
         "responsibilities": [
           "Contributed to the development of a large-scale web application",
           "Collaborated with product managers to define and implement new features",
@@ -39,8 +39,8 @@
         "position": "Blblah engineeer",
         "company": "blah tech Tech",
         "location": "Blah, USA",
-        "startDate": "June 2010",
-        "endDate": "December 2007",
+        "startDate": "2010",
+        "endDate": "2007",
         "responsibilities": [
           "Implement new features",
           "Caffe boy"

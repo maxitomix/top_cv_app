@@ -26,6 +26,7 @@ function App() {
        <CvPage 
         profileApp={profileApp}
         skillsApp={skillsApp}
+        workExperienceApp={workExperienceApp}
        />
     </div>
   );
