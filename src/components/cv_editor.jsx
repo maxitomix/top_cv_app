@@ -99,6 +99,19 @@ function SkillsEditor(props){
     props.setSkills(updatedSkills);
   };
 
+  const handleDeleteSkill = (index) => {
+    const updatedSkills = [...newSkills];
+    updatedSkills.splice(index,1);
+    setNewSkills(updatedSkills);
+    props.setSkills(updatedSkills);
+  }
+
+  const handleAddSkill = () =>{
+    const updatedSkills = [...newSkills];
+    updatedSkills.push("New Skill");
+    setNewSkills(updatedSkills);
+    props.setSkills(updatedSkills);
+  }
 
   return (
     <div className="skillsEditor">
@@ -106,15 +119,17 @@ function SkillsEditor(props){
 
       <div className="inputBox">
         {newSkills.map((skill, index) => (
-          <label className="input" key={index}>
+          <label className="input" key={index}>Skill No {index}
             <input 
               type="text" 
               value={skill}
               onChange={(e) => handleSkillChange(index, e)}
             />
+            <button onClick={() => handleDeleteSkill(index)}>delete</button>
           </label>
         ))}
       </div>
+      <button onClick={() => handleAddSkill()}>Add</button>
     </div>
   )
 }
