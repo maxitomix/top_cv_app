@@ -88,21 +88,64 @@ function ProfileEditor(props){
   )
 }
 
-export default function CvEditor({setProfileApp, profileApp}) {
 
+function SkillsEditor(props){
+  const [newSkills, setNewSkills] = useState(props.newSkills ||[])
+
+  const handleSkillChange = (index, e) => {
+    const updatedSkills = [...newSkills];
+    updatedSkills[index] = e.target.value;
+    setNewSkills(updatedSkills);
+    props.setSkills(updatedSkills);
+  };
+
+
+  return (
+    <div className="skillsEditor">
+      <h2>SKILLS SECTION</h2>
+
+      <div className="inputBox">
+        {newSkills.map((skill, index) => (
+          <label className="input" key={index}>
+            <input 
+              type="text" 
+              value={skill}
+              onChange={(e) => handleSkillChange(index, e)}
+            />
+          </label>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default function CvEditor({
+    setProfileApp, profileApp,
+    setSkillsApp, skillsApp}) 
+
+
+{
   const [newProfile, setProfile] = useState(profileApp)
+  const [newSkills, setSkills] = useState(skillsApp)
  
   useEffect(
     () => { setProfileApp(newProfile)},
     [newProfile, setProfileApp]
+  );
+ 
+  useEffect(
+    () => { setSkillsApp(newSkills)},
+    [newSkills, setSkillsApp]
   );
   
 
   return (
       <div className="cvEditor">
         <ProfileEditor newProfile={newProfile} setProfile={setProfile} />
+        <SkillsEditor newSkills={newSkills} setSkills={setSkills}/>
         CV EDITOR
         <pre>{JSON.stringify(newProfile, null, 2)}</pre>
+        <pre>{JSON.stringify(newSkills, null, 2)}</pre>
       </div>
   );
 }

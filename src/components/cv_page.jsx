@@ -37,8 +37,10 @@ function Profile({profileApp}) {
 }
 
 
-function Skills() {
-  const skills = samplePerson.skills;
+function Skills({skillsApp}) {
+
+  const skills = skillsApp
+
   return (
       <div className="skills">
         <h2 className='skillsTitle'>SKILLS</h2>
@@ -103,11 +105,11 @@ function Education(){
 }
 
 
-export default function CvPage({ profileApp }) {
+export default function CvPage({ profileApp, skillsApp }) {
     return (
       <div className="cvPage">
         <Profile profileApp={profileApp}/>
-        <Skills />
+        <Skills skillsApp={skillsApp}/>
         <WorkExperience />
         <Education />
       </div>
