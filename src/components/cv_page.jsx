@@ -1,8 +1,10 @@
 import samplePerson from '../data/sample.json'
 
 
-function Profile() {
-  const profile = samplePerson.profile;
+function Profile({profileApp}) {
+  
+  const profile = profileApp;
+
   return (
       <div className="profile">
 
@@ -101,10 +103,10 @@ function Education(){
 }
 
 
-export default function CvPage() {
+export default function CvPage({ profileApp }) {
     return (
       <div className="cvPage">
-        <Profile />
+        <Profile profileApp={profileApp}/>
         <Skills />
         <WorkExperience />
         <Education />

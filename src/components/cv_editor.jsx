@@ -1,38 +1,38 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
 function ProfileEditor(props){
-  const [newName, setNewName] = useState("")
-  const [newTitle, setNewTitle] = useState("")
-  const [newPhone, setNewPhone] = useState("")
-  const [newEmail, setNewEmail] = useState("")
-  const [newWebsite, setNewWebsite] = useState("")
-  const [newLinkedin, setNewLinkedin] = useState("")
+  const [newName, setNewName] = useState(props.newProfile.name)
+  const [newTitle, setNewTitle] = useState(props.newProfile.title)
+  const [newPhone, setNewPhone] = useState(props.newProfile.phone)
+  const [newEmail, setNewEmail] = useState(props.newProfile.email)
+  const [newWebsite, setNewWebsite] = useState(props.newProfile.website)
+  const [newLinkedin, setNewLinkedin] = useState(props.newProfile.linkedin)
 
   const handleNameChange = (e) => {
     setNewName(e.target.value);
-    props.setProfile({ ...props.newProfile, name: newName });
+    props.setProfile({ ...props.newProfile, name: e.target.value });
   };
   const handleTitleChange = (e) => {
     setNewTitle(e.target.value);
-    props.setProfile({ ...props.newProfile, title: newTitle });
+    props.setProfile({ ...props.newProfile, title: e.target.value });
   };
   const handlePhoneChange = (e) => {
     setNewPhone(e.target.value);
-    props.setProfile({ ...props.newProfile, phone: newPhone });
+    props.setProfile({ ...props.newProfile, phone: e.target.value });
   };
   const handleEmailChange = (e) => {
     setNewEmail(e.target.value);
-    props.setProfile({ ...props.newProfile, email: newEmail });
+    props.setProfile({ ...props.newProfile, email: e.target.value });
   };
   const handleWebsiteChange = (e) => {
     setNewWebsite(e.target.value);
-    props.setProfile({ ...props.newProfile, website: newWebsite });
+    props.setProfile({ ...props.newProfile, website: e.target.value });
   };
   const handleLinkedinChange = (e) => {
     setNewLinkedin(e.target.value);
-    props.setProfile({ ...props.newProfile, linkedin: newLinkedin });
+    props.setProfile({ ...props.newProfile, linkedin: e.target.value });
   };
 
 
@@ -88,9 +88,15 @@ function ProfileEditor(props){
   )
 }
 
-export default function CvEditor() {
+export default function CvEditor({setProfileApp, profileApp}) {
 
-  const [newProfile, setProfile] = useState({})
+  const [newProfile, setProfile] = useState(profileApp)
+ 
+  useEffect(
+    () => { setProfileApp(newProfile)},
+    [newProfile, setProfileApp]
+  );
+  
 
   return (
       <div className="cvEditor">
