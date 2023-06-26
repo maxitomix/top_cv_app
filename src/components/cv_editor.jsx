@@ -134,14 +134,55 @@ function SkillsEditor(props){
   )
 }
 
+
+function WorkExperienceEditor(props){
+  const [works, setWork] = useState(props.newWorkExperience ||[])
+
+  const handlePositionChange = (e, index) => {
+    const updatedWorks = [...works];
+    updatedWorks[index] = { ...updatedWorks[index], position: e.target.value };
+    setWork(updatedWorks);
+    props.setWorkExperience(updatedWorks);
+  };
+
+
+  return(
+  <div className="workExperienceEditor">
+      <h2>WORK EXPERIENCE</h2>
+      <div className="inputBox">
+          {works.map((work, index) => (
+
+            <label className="input">Position:
+              <input 
+              type="text" 
+              value={work.position}
+              onChange={(e) => handlePositionChange(e, index)}
+              />
+            </label>
+
+          ))}
+      </div>  
+
+    </div>
+  )
+}
+
+
+
+
+
+
 export default function CvEditor({
     setProfileApp, profileApp,
-    setSkillsApp, skillsApp}) 
+    setSkillsApp, skillsApp,
+    setWorkExperienceApp, workExperienceApp
+  }) 
 
 
 {
   const [newProfile, setProfile] = useState(profileApp)
   const [newSkills, setSkills] = useState(skillsApp)
+  const [newWorkExperience, setWorkExperience] = useState(workExperienceApp)
  
   useEffect(
     () => { setProfileApp(newProfile)},
@@ -152,15 +193,20 @@ export default function CvEditor({
     () => { setSkillsApp(newSkills)},
     [newSkills, setSkillsApp]
   );
-  
+
+  useEffect(
+    () => { setWorkExperienceApp(newWorkExperience)},
+    [newWorkExperience, setWorkExperienceApp]
+  );
 
   return (
       <div className="cvEditor">
         <ProfileEditor newProfile={newProfile} setProfile={setProfile} />
         <SkillsEditor newSkills={newSkills} setSkills={setSkills}/>
+        <WorkExperienceEditor newWorkExperience={newWorkExperience} setWorkExperience={setWorkExperience} />
         CV EDITOR
-        <pre>{JSON.stringify(newProfile, null, 2)}</pre>
-        <pre>{JSON.stringify(newSkills, null, 2)}</pre>
+         <pre>{JSON.stringify(newWorkExperience, null, 2)}</pre>
+
       </div>
   );
 }
