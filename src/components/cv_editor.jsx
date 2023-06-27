@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
+import chevron from '../icons/chevron.png';
 
 
 
 function ProfileEditor(props){
+
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
   const [newName, setNewName] = useState(props.newProfile.name)
   const [newTitle, setNewTitle] = useState(props.newProfile.title)
   const [newSummary, setNewSummary] = useState(props.newProfile.summary)
@@ -40,10 +44,20 @@ function ProfileEditor(props){
     props.setProfile({ ...props.newProfile, linkedin: e.target.value });
   };
 
+  const handleCollapseChevron = () => {
+    setIsCollapsed(!isCollapsed);
+    console.log(isCollapsed)
+  }
 
   return (
     <div className="profileEditor">
-      <h2>PROFILE SECTION</h2>
+
+      <div className="miniHeader">
+        <h2>PROFILE SECTION</h2> 
+        <img className={`collapseBtn ${isCollapsed ? "rotate" : ""}`} src={chevron} alt="chevron" onClick={handleCollapseChevron } />
+      </div>
+
+      {!isCollapsed && (
 
       <div className="inputBox">
         
@@ -95,15 +109,23 @@ function ProfileEditor(props){
         <label className="input">Linkedin:
           <input type="text" 
           value={newLinkedin}
-          onChange={handleLinkedinChange}/></label>
+          onChange={handleLinkedinChange}
+        /></label>
+
       </div>
 
+      )}
+
     </div>
+
   )
 }
 
 
 function SkillsEditor(props){
+  
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
   const [newSkills, setNewSkills] = useState(props.newSkills ||[])
 
   const handleSkillChange = (index, e) => {
@@ -127,9 +149,20 @@ function SkillsEditor(props){
     props.setSkills(updatedSkills);
   }
 
+  const handleCollapseChevron = () => {
+    setIsCollapsed(!isCollapsed);
+    console.log(isCollapsed)
+  }
+
   return (
     <div className="skillsEditor">
+
+      <div className="miniHeader">
       <h2>SKILLS SECTION</h2>
+        <img className={`collapseBtn ${isCollapsed ? "rotate" : ""}`} src={chevron} alt="chevron" onClick={handleCollapseChevron } />
+      </div>
+
+      {!isCollapsed && (
 
       <div className="inputBox">
         {newSkills.map((skill, index) => (
@@ -144,18 +177,24 @@ function SkillsEditor(props){
             </label>
           </div>
         ))}
-      </div>
+      
 
-      <div className="addButton">
-        <button onClick={() => handleAddSkill()}>Add</button>
-      </div>
+        <div className="addButton">
+          <button onClick={() => handleAddSkill()}>Add</button>
+        </div>
 
+      </div>
+     )}
+    
     </div>
   )
 }
 
 
 function WorkExperienceEditor(props){
+
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
   const [works, setWork] = useState(props.newWorkExperience ||[])
 
   const handleStartDateChange = (e, index) => {
@@ -208,9 +247,21 @@ function WorkExperienceEditor(props){
     props.setWorkExperience(updatedWorks);
   }
 
+  const handleCollapseChevron = () => {
+    setIsCollapsed(!isCollapsed);
+    console.log(isCollapsed)
+  }
+
   return(
   <div className="workExperienceEditor">
+      
+      <div className="miniHeader">
       <h2>WORK EXPERIENCE</h2>
+        <img className={`collapseBtn ${isCollapsed ? "rotate" : ""}`} src={chevron} alt="chevron" onClick={handleCollapseChevron } />
+      </div>
+
+      {!isCollapsed && (
+
       <div className="inputBox">
           {works.map((work, index) => (
             <div key={index}>
@@ -264,17 +315,24 @@ function WorkExperienceEditor(props){
             </div>
 
           ))}
-      </div>  
 
-      <div className="addButton">
+        <div className="addButton">
         <button onClick={() => handleAddWork()}>Add</button>
       </div>
-    </div>
+
+    </div>  
+
+    )}
+
+  </div>
   )
 }
 
 
 function EducationEditor(props){
+
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
   const [education, setEducation] = useState(props.newEducation ||[])
 
   const handleGraduationYearChange = (e, index) =>{
@@ -313,18 +371,29 @@ function EducationEditor(props){
     props.setNewEducation(updateEducation);
   }
 
-  
   const handleAddEducation = () =>{
     const updateEducation = [...education];
     updateEducation.push({position: "New Education"});
     setEducation(updateEducation);
     props.setNewEducation(updateEducation);
   }
-  
+
+  const handleCollapseChevron = () => {
+    setIsCollapsed(!isCollapsed);
+    console.log(isCollapsed)
+  }
 
   return(
     <div className="educationEditor">
+
+      <div className="miniHeader">
       <h2>EDUCATION</h2>
+        <img className={`collapseBtn ${isCollapsed ? "rotate" : ""}`} src={chevron} alt="chevron" onClick={handleCollapseChevron } />
+      </div>
+
+      {!isCollapsed && (
+
+      
       <div className="inputBox">
           {education.map((school, index) => (
             <div key={index}>
@@ -368,13 +437,15 @@ function EducationEditor(props){
             </div>
             
             ))}
-        </div>
+       
 
         <div className="addButton">
         <button onClick={() => handleAddEducation()}>Add</button>
         </div>
 
-      </div>
+      </div>    
+      )}
+    </div>
   )
 }
 
