@@ -76,8 +76,8 @@ function WorkExperience({workExperienceApp}){
 }
 
 
-function Education(){
-  const education = samplePerson.education;
+function Education({educationApp}){
+  const education = educationApp;
   return(
     <div className="education">
       <h2 className='educationTitle'>EDUCATION</h2>
@@ -105,13 +105,13 @@ function Education(){
 }
 
 
-export default function CvPage({ profileApp, skillsApp, workExperienceApp }) {
+export default function CvPage({ profileApp, skillsApp, workExperienceApp, educationApp }) {
     return (
       <div className="cvPage">
         <Profile profileApp={profileApp}/>
         <Skills skillsApp={skillsApp}/>
         <WorkExperience workExperienceApp={workExperienceApp}/>
-        <Education />
+        <Education educationApp={educationApp} />
       </div>
     );
 }

@@ -11,6 +11,7 @@ function App() {
   const [profileApp, setProfileApp] = useState(samplePerson.profile);
   const [skillsApp, setSkillsApp] = useState(samplePerson.skills);
   const [workExperienceApp, setWorkExperienceApp] = useState(samplePerson.workExperience);
+  const [educationApp, setEducationApp] = useState(samplePerson.education);
 
   return (
     <div className="App">
@@ -21,12 +22,18 @@ function App() {
         skillsApp={skillsApp}
         setWorkExperienceApp={setWorkExperienceApp}
         workExperienceApp={workExperienceApp}
+        educationApp={educationApp}
+        setEducationApp={setEducationApp}
        />
-       {/* <pre>{JSON.stringify(skillsApp, null, 2)}</pre> */}
+       
+       {/* <pre>{JSON.stringify(educationApp, null, 2)}</pre> */}
+
+
        <CvPage 
         profileApp={profileApp}
         skillsApp={skillsApp}
         workExperienceApp={workExperienceApp}
+        educationApp={educationApp}
        />
     </div>
   );

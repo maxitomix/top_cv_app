@@ -264,14 +264,116 @@ function WorkExperienceEditor(props){
 }
 
 
+function EducationEditor(props){
+  const [education, setEducation] = useState(props.newEducation ||[])
+
+  const handleGraduationYearChange = (e, index) =>{
+    const updateEducation = [...education];
+    updateEducation[index] = {...updateEducation[index], graduationYear: e.target.value}
+    setEducation(updateEducation);
+    props.setNewEducation(updateEducation);
+  }
+
+  const handleDegreeChange = (e, index) =>{
+    const updateEducation = [...education];
+    updateEducation[index] = {...updateEducation[index], degree: e.target.value}
+    setEducation(updateEducation);
+    props.setNewEducation(updateEducation);
+  }
+
+
+  const handleInstitutionChange = (e, index) =>{
+    const updateEducation = [...education];
+    updateEducation[index] = {...updateEducation[index], institution: e.target.value}
+    setEducation(updateEducation);
+    props.setNewEducation(updateEducation);
+  }
+
+  const handleLocationChange = (e, index) =>{
+    const updateEducation = [...education];
+    updateEducation[index] = {...updateEducation[index], location: e.target.value}
+    setEducation(updateEducation);
+    props.setNewEducation(updateEducation);
+  }
+
+  const handleDeleteEducation = (index) => {
+    const updateEducation = [...education];
+    updateEducation.splice(index,1);
+    setEducation(updateEducation);
+    props.setNewEducation(updateEducation);
+  }
+
+  
+  const handleAddEducation = () =>{
+    const updateEducation = [...education];
+    updateEducation.push({position: "New Education"});
+    setEducation(updateEducation);
+    props.setNewEducation(updateEducation);
+  }
+  
+
+  return(
+    <div className="educationEditor">
+      <h2>EDUCATION</h2>
+      <div className="inputBox">
+          {education.map((school, index) => (
+            <div key={index}>
+              <h5 className="workIndex">School {index+1}</h5>
+
+              <label className="input" > Graduation Year:
+                <input 
+                type="text" 
+                value={school.graduationYear}
+                onChange={(e) => handleGraduationYearChange(e, index)}
+                />
+              </label>
+
+              <label className="input" > Degree:
+                <input 
+                type="text" 
+                value={school.degree}
+                onChange={(e) => handleDegreeChange(e, index)}
+                />
+              </label>
+
+              <label className="input" > Institution:
+                <input 
+                type="text" 
+                value={school.institution}
+                onChange={(e) => handleInstitutionChange(e, index)}
+                />
+              </label>
+
+              <label className="input" > Location:
+                <input 
+                type="text" 
+                value={school.location}
+                onChange={(e) => handleLocationChange(e, index)}
+                />
+              </label>
+
+              <button onClick={() => handleDeleteEducation(index)}>delete</button>
+
+            </div>
+            
+            ))}
+        </div>
+
+        <button onClick={() => handleAddEducation()}>Add</button>
+
+      </div>
+  )
+}
 
 
 
+// -----------------------------------------
 
 export default function CvEditor({
     setProfileApp, profileApp,
     setSkillsApp, skillsApp,
-    setWorkExperienceApp, workExperienceApp
+    setWorkExperienceApp, workExperienceApp,
+    setEducationApp, educationApp
   }) 
 
 
@@ -279,6 +381,7 @@ export default function CvEditor({
   const [newProfile, setProfile] = useState(profileApp)
   const [newSkills, setSkills] = useState(skillsApp)
   const [newWorkExperience, setWorkExperience] = useState(workExperienceApp)
+  const [newEducation, setNewEducation] = useState(educationApp)
  
   useEffect(
     () => { setProfileApp(newProfile)},
@@ -295,13 +398,18 @@ export default function CvEditor({
     [newWorkExperience, setWorkExperienceApp]
   );
 
+  useEffect(
+    () => { setEducationApp(newEducation)},
+    [newEducation, setEducationApp]
+  );
+
   return (
       <div className="cvEditor">
         <ProfileEditor newProfile={newProfile} setProfile={setProfile} />
         <SkillsEditor newSkills={newSkills} setSkills={setSkills}/>
         <WorkExperienceEditor newWorkExperience={newWorkExperience} setWorkExperience={setWorkExperience} />
-        CV EDITOR
-         <pre>{JSON.stringify(newWorkExperience, null, 2)}</pre>
+        <EducationEditor newEducation={newEducation} setNewEducation={setNewEducation} />
+     {/* <pre>{JSON.stringify(newWorkExperience, null, 2)}</pre> */}
 
       </div>
   );
