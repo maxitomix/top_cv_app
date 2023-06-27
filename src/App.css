@@ -38,6 +38,7 @@
   }
 }
 
+/* //---------PROFILE--------------- */
 .profile{
   display: flex;
   flex-direction: column;
@@ -67,6 +68,12 @@
 .profileRow2 .profileSummary{
   text-align: justify;
   text-indent: 25px;
+}
+
+
+.profile img{
+  height: 1.3rem;
+  background-color: transparent;
 }
 
 /* -----------SKILLS */

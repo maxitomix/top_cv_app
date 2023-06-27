@@ -1,5 +1,7 @@
-import samplePerson from '../data/sample.json'
-
+import phoneIcon from '../icons/phoneICON.png';
+import emailIcon from '../icons/emailICON.png';
+import linkedinIcon from '../icons/linkedinICON.png';
+import websiteIcon from '../icons/websiteICON.png';
 
 function Profile({profileApp}) {
   
@@ -19,10 +21,10 @@ function Profile({profileApp}) {
 
           <div className="profileRow1Col2"> 
 
-            <div className="profilePhone">{profile.phone}</div>
-            <div className="profileEmail">{profile.email}</div>
-            <div className="profileWebsite">{profile.website}</div>
-            <div className="profileLinkedin">{profile.linkedin}</div>
+            <div className="profilePhone">{profile.phone}       <img src={phoneIcon} alt="phoneICON" />  </div>
+            <div className="profileEmail">{profile.email}       <img src={emailIcon} alt="emailCON" />  </div>
+            <div className="profileWebsite">{profile.website}   <img src={websiteIcon} alt="websiteICON" /> </div>
+            <div className="profileLinkedin">{profile.linkedin} <img src={linkedinIcon} alt="linkedinICON" /> </div>
 
           </div>
 
