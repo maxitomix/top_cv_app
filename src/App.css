@@ -183,10 +183,6 @@
 
 }
 
-.cvEditor h2{
-  border-bottom: 1px solid blue;
-  margin-top: 1rem;
-}
 
 .skillsEditor input{
   margin-left: auto;
@@ -210,3 +206,32 @@ color: white;
   background-color: green;
   color: white;
 }
+
+.input button{
+  background-color: crimson;
+  color: white; 
+}
+
+.collapseBtn{
+  margin-left: auto;
+  width: 2rem;
+  transform: rotate(-180deg);
+  transition: transform 0.3s;
+}
+
+.miniHeader{
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  display: flex;
+  border-bottom: 1px solid blue;
+}
+
+.rotate {
+  transform: rotate(-90deg);
+  transition: transform 0.3s;
+}
+
+
+
+
+
