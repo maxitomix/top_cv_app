@@ -299,7 +299,7 @@ function WorkExperienceEditor(props){
               />
               </label>
 
-              <label className="input" > Responsibilities:
+              <label className="input textArea" > Responsibilities:
               <textarea rows="5" cols="50"
               
               value={work.responsibilities}
