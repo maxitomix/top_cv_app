@@ -140,12 +140,16 @@ function SkillsEditor(props){
                 value={skill}
                 onChange={(e) => handleSkillChange(index, e)}
               />
-              <button onClick={() => handleDeleteSkill(index)}>delete</button>
+              <button onClick={() => handleDeleteSkill(index)}>Delete</button>
             </label>
           </div>
         ))}
       </div>
-      <button onClick={() => handleAddSkill()}>Add</button>
+
+      <div className="addButton">
+        <button onClick={() => handleAddSkill()}>Add</button>
+      </div>
+
     </div>
   )
 }
@@ -253,12 +257,18 @@ function WorkExperienceEditor(props){
               </textarea>
               </label>
 
-              <button onClick={() => handleDeleteWork(index)}>delete</button>
+              <div className="deleteButton">
+               <button onClick={() => handleDeleteWork(index)}>Delete</button>
+              </div>
+
             </div>
 
           ))}
       </div>  
-      <button onClick={() => handleAddWork()}>Add</button>
+
+      <div className="addButton">
+        <button onClick={() => handleAddWork()}>Add</button>
+      </div>
     </div>
   )
 }
@@ -352,14 +362,17 @@ function EducationEditor(props){
                 />
               </label>
 
-              <button onClick={() => handleDeleteEducation(index)}>delete</button>
-
+              <div className="deleteButton">
+               <button onClick={() => handleDeleteEducation(index)}>Delete</button>
+              </div>
             </div>
             
             ))}
         </div>
 
+        <div className="addButton">
         <button onClick={() => handleAddEducation()}>Add</button>
+        </div>
 
       </div>
   )
@@ -405,6 +418,7 @@ export default function CvEditor({
 
   return (
       <div className="cvEditor">
+        <h1>CV EDITOR</h1>
         <ProfileEditor newProfile={newProfile} setProfile={setProfile} />
         <SkillsEditor newSkills={newSkills} setSkills={setSkills}/>
         <WorkExperienceEditor newWorkExperience={newWorkExperience} setWorkExperience={setWorkExperience} />

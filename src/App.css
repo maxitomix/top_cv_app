@@ -154,6 +154,10 @@
   margin-bottom: 1rem;
 }
 
+
+
+/* ---------------CV EDITOR */
+
 /* ---------------InputBox */
 
 .inputBox{
@@ -171,4 +175,38 @@
 .workIndex{
   margin-bottom: 0;
   margin-top: 1rem;
+}
+
+.cvEditor h1{
+  margin-top: 0;
+  text-align: center;
+
+}
+
+.cvEditor h2{
+  border-bottom: 1px solid blue;
+  margin-top: 1rem;
+}
+
+.skillsEditor input{
+  margin-left: auto;
+}
+
+.deleteButton, .addButton{
+  display: flex;
+}
+
+.deleteButton button, .addButton button{
+  margin-left: auto;
+}
+
+.deleteButton button{
+background-color: crimson;
+color: white;
+}
+
+.addButton button{
+  margin-top: .5rem;
+  background-color: green;
+  color: white;
 }
